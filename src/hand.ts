@@ -1,11 +1,23 @@
-import { Card } from "./card";
+import { Card } from './card';
 
 export class Hand {
     get value(): number {
-        return this.drawnCards.map((card) => card.getValue()).reduce((pre, cur) => pre + cur);
+        const v = this.drawnCards.map((card) => {
+            const cardV = card.value;
+            if (cardV == 1) {
+                return 11;
+            }
+            return cardV;
+        }).reduce((pre, cur) => pre + cur);
+
+        if (v > 21) {
+            return this.drawnCards.map((card) => card.value).reduce((pre, cur) => pre + cur);
+        }
+        return v;
     }
 
     private drawnCards: Card[] = [];
+
     draw(card: Card) {
         this.drawnCards.push(card);
     }

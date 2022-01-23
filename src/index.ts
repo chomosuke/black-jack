@@ -10,9 +10,9 @@ async function main() {
     playerHand.draw(deck.pop());
     while (true) {
         if (playerHand.value > 21) {
-            console.log(`You are currently at Bust!`);
+            console.log('You are currently at Bust!');
             console.log(`with the hand ${playerHand.getDrawn()}\n`);
-            console.log(`Dealer wins!`);
+            console.log('Dealer wins!');
             process.exit();
         } else {
             console.log(`You are currently at ${playerHand.value}`);
@@ -32,9 +32,9 @@ async function main() {
     dealerHand.draw(deck.pop());
     while (true) {
         if (dealerHand.value > 21) {
-            console.log(`Dealer is at Bust!`);
+            console.log('Dealer is at Bust!');
             console.log(`with the hand ${dealerHand.getDrawn()}\n`);
-            console.log(`You beat the dealer!`);
+            console.log('You beat the dealer!');
             process.exit();
         } else {
             console.log(`Dealer is at ${dealerHand.value}`);

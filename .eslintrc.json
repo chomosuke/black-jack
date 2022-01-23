@@ -55,6 +55,12 @@
             {
                 "args": "none"
             }
+        ],
+        "no-constant-condition": [
+            "error",
+            {
+                "checkLoops": false
+            }
         ]
     }
 }
