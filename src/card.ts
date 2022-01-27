@@ -11,8 +11,7 @@ export class Card {
 
     get value(): number {
         return Math.min(
-            10,
-            this._value,
+            10, this._value,
         );
     }
 

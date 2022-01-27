@@ -4,8 +4,8 @@ import { read } from './readlinePromise';
 
 export async function main(deck: Deck) {
     const playerHand = new Hand();
-    playerHand.draw(deck.pop());
-    playerHand.draw(deck.pop());
+    playerHand.draw(deck.dealCard());
+    playerHand.draw(deck.dealCard());
     while (true) {
         if (playerHand.value > 21) {
             console.log('You are currently at Bust!');
@@ -20,14 +20,14 @@ export async function main(deck: Deck) {
         if (input == '0') {
             break;
         }
-        const drawn = deck.pop();
+        const drawn = deck.dealCard();
         console.log(`You draw ${drawn.toString()}\n`);
         playerHand.draw(drawn);
     }
 
     const dealerHand = new Hand();
-    dealerHand.draw(deck.pop());
-    dealerHand.draw(deck.pop());
+    dealerHand.draw(deck.dealCard());
+    dealerHand.draw(deck.dealCard());
     while (true) {
         if (dealerHand.value > 21) {
             console.log('You beat the dealer!');
@@ -39,7 +39,7 @@ export async function main(deck: Deck) {
         if (dealerHand.value > 17) {
             break;
         }
-        const drawn = deck.pop();
+        const drawn = deck.dealCard();
         console.log(`Dealer draws ${drawn.toString()}\n`);
         dealerHand.draw(drawn);
     }

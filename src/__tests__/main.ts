@@ -1,20 +1,25 @@
 jest.mock('../readlinePromise');
-import { read } from "../readlinePromise";
-import { main } from "../main";
-import { Card } from "../card";
-import { Deck } from "../deck";
+import { read } from '../readlinePromise';
+import { main } from '../main';
+import { Card } from '../card';
+import { Deck } from '../deck';
 
 describe('end to end tests', () => {
     test('Sample Gameplay 1', async () => {
-        const userInputs = ['0', '1', '1', '1'];
+        const userInputs = [
+            '0',
+            '1',
+            '1',
+            '1',
+        ];
 
         const mockRead = read as unknown as jest.Mock<string, [string]>;
 
         mockRead.mockReset();
-        mockRead.mockImplementation((s: string) => userInputs.pop()!);
+        mockRead.mockImplementation((s: string) => userInputs.pop()!); // eslint-disable-line  @typescript-eslint/no-non-null-assertion
 
         global.console = {
-            log: jest.fn<undefined, [string]>()
+            log: jest.fn<undefined, [string]>(),
         } as unknown as Console;
 
         const cards = [
@@ -31,7 +36,7 @@ describe('end to end tests', () => {
             pop: jest.fn<Card | undefined, []>(() => {
                 return cards.pop();
             }),
-        }
+        };
 
         await main(deck as unknown as Deck);
 
@@ -41,8 +46,8 @@ describe('end to end tests', () => {
         expect(mockRead.mock.calls.map((e) => e[0]).every((e) => e === 'Hit or stay? (Hit = 1, Stay = 0)')).toBeTruthy();
         
         const mockLog = global.console.log as jest.Mock<undefined, [string]>;
-        expect(mockLog.mock.calls.map(e => e[0]).join('\n')).toEqual(String.raw
-`You are currently at 15
+        expect(mockLog.mock.calls.map(e => e[0]).join('\n')).toEqual(
+            String.raw`You are currently at 15
 with the hand [['ACE', 'HEART'], [4, 'HEART']]
 
 You draw ['QUEEN', 'SPADE']
@@ -74,10 +79,10 @@ You beat the dealer!`);
         const mockRead = read as unknown as jest.Mock<string, [string]>;
 
         mockRead.mockReset();
-        mockRead.mockImplementation((s: string) => userInputs.pop()!);
+        mockRead.mockImplementation((s: string) => userInputs.pop()!); // eslint-disable-line  @typescript-eslint/no-non-null-assertion
 
         global.console = {
-            log: jest.fn<undefined, [string]>()
+            log: jest.fn<undefined, [string]>(),
         } as unknown as Console;
 
         const cards = [
@@ -89,7 +94,7 @@ You beat the dealer!`);
             pop: jest.fn<Card | undefined, []>(() => {
                 return cards.pop();
             }),
-        }
+        };
 
         await main(deck as unknown as Deck);
 
@@ -99,8 +104,8 @@ You beat the dealer!`);
         expect(mockRead.mock.calls.map((e) => e[0]).every((e) => e === 'Hit or stay? (Hit = 1, Stay = 0)')).toBeTruthy();
         
         const mockLog = global.console.log as jest.Mock<undefined, [string]>;
-        expect(mockLog.mock.calls.map(e => e[0]).join('\n')).toEqual(String.raw
-`You are currently at 12
+        expect(mockLog.mock.calls.map(e => e[0]).join('\n')).toEqual(
+            String.raw`You are currently at 12
 with the hand [[8, 'SPADE'], [4, 'DIAMOND']]
 
 You draw ['QUEEN', 'DIAMOND']

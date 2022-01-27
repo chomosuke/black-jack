@@ -10,8 +10,7 @@ export class Deck {
                 'HEART',
                 'DIAMOND',
             ]) {
-                remaining.push(new Card(i,
-                    str));
+                remaining.push(new Card(i, str));
             }
         }
         // shuffle
@@ -19,7 +18,7 @@ export class Deck {
         return remaining;
     })();
 
-    pop(): Card {
+    dealCard(): Card {
         const card = this.remaining.pop();
         if (card == undefined) {
             throw Error('no card remaining in deck');

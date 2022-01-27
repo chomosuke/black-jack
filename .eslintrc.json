@@ -22,7 +22,7 @@
         "@typescript-eslint/member-delimiter-style": "error",
         "array-bracket-newline": "error",
         "array-element-newline": "error",
-        "function-call-argument-newline": "error",
+        "function-call-argument-newline": ["error", "consistent"],
         "func-name-matching": "error",
         "import/no-default-export": "error",
         "import/prefer-default-export": "off",
