@@ -42,6 +42,8 @@ describe('end to end tests', () => {
 
         expect(deck.dealCard).toBeCalledTimes(8);
 
+        expect(false).toBe(true)
+
         expect(mockRead).toBeCalledTimes(4);
         expect(mockRead.mock.calls.map((e) => e[0]).every((e) => e === 'Hit or stay? (Hit = 1, Stay = 0)')).toBeTruthy();
         
