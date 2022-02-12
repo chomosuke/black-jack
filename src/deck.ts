@@ -5,7 +5,7 @@ export class Deck {
         const remaining: Card[] = [];
         for (let i = 1; i < 14; i++) {
             for (const str of [
-                'QUEEN',
+                'CLUB',
                 'SPADE',
                 'HEART',
                 'DIAMOND',

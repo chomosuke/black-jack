@@ -6,7 +6,7 @@ test('deck test', () => {
     let cards: Card[] = [];
     for (let value = 1; value < 14; value++) {
         for (const suit of [
-            'QUEEN',
+            'CLUB',
             'SPADE',
             'HEART',
             'DIAMOND',
