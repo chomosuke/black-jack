@@ -1,15 +1,6 @@
 name: Continous Integration
 on: [push]
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
-      with:
-        node-version: 14
-    - run: npm ci
-    - run: npm test
   build:
     runs-on: ubuntu-latest
     steps:
@@ -19,3 +10,21 @@ jobs:
         node-version: 14
     - run: npm ci
     - run: npm run build
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 14
+    - run: npm ci
+    - run: npm run lint:nofix
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 14
+    - run: npm ci
+    - run: npm test
