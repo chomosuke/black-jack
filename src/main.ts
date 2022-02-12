@@ -20,7 +20,7 @@ export async function main(deck: Deck) {
         if (input == '0') {
             break;
         }
-        const drawn = deck.dealCard(
+        const drawn = deck.dealCard();
         console.log(`You draw ${drawn.toString()}\n`);
         playerHand.draw(drawn);
     }
