@@ -33,14 +33,14 @@ describe('end to end tests', () => {
             new Card(1, 'HEART'),
         ];
         const deck = {
-            pop: jest.fn<Card | undefined, []>(() => {
+            dealCard: jest.fn<Card | undefined, []>(() => {
                 return cards.pop();
             }),
         };
 
         await main(deck as unknown as Deck);
 
-        expect(deck.pop).toBeCalledTimes(8);
+        expect(deck.dealCard).toBeCalledTimes(8);
 
         expect(mockRead).toBeCalledTimes(4);
         expect(mockRead.mock.calls.map((e) => e[0]).every((e) => e === 'Hit or stay? (Hit = 1, Stay = 0)')).toBeTruthy();
@@ -91,14 +91,14 @@ You beat the dealer!`);
             new Card(8, 'SPADE'),
         ];
         const deck = {
-            pop: jest.fn<Card | undefined, []>(() => {
+            dealCard: jest.fn<Card | undefined, []>(() => {
                 return cards.pop();
             }),
         };
 
         await main(deck as unknown as Deck);
 
-        expect(deck.pop).toBeCalledTimes(3);
+        expect(deck.dealCard).toBeCalledTimes(3);
 
         expect(mockRead).toBeCalledTimes(1);
         expect(mockRead.mock.calls.map((e) => e[0]).every((e) => e === 'Hit or stay? (Hit = 1, Stay = 0)')).toBeTruthy();
